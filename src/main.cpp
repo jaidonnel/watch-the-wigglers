@@ -6,6 +6,7 @@
 #include <vector>
 #include <limits>
 #include "Player.h"
+#include "PowerUp.h"
 
 int randomInt(int start, int end);
 
@@ -16,11 +17,6 @@ int randomInt(int start, int end) {
 void clearScreen() {
   std::cout << "\033[2J\033[1;1H";
 }
-
-class PowerUp {
-public:
-  int position;
-};
 
 class Snake {
 public:

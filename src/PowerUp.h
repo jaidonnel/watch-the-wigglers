@@ -1,0 +1,3 @@
+struct PowerUp {
+  int position;
+};
