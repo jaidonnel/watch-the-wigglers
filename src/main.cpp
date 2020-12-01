@@ -8,6 +8,7 @@
 #include "Player.h"
 #include "PowerUp.h"
 #include "Snake.h"
+#include "Ladder.h"
 
 int randomInt(int start, int end);
 
@@ -18,11 +19,6 @@ int randomInt(int start, int end) {
 void clearScreen() {
   std::cout << "\033[2J\033[1;1H";
 }
-
-class Ladder {
-public:
-  int top, bottom;
-};
 
 class Board {
 public:
