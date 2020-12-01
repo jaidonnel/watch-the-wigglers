@@ -5,10 +5,7 @@
 #include <time.h>
 #include <vector>
 #include <limits>
-#include "Player.h"
-#include "PowerUp.h"
-#include "Snake.h"
-#include "Ladder.h"
+#include "structures.h"
 
 int randomInt(int start, int end);
 
