@@ -47,6 +47,9 @@ int main() {
       std::cout << "Enter Player " << i << "'s name" << std::endl;
       std::cin.ignore();
       getline(std::cin, name);
+      Player player;
+      player.name = name;
+      players.push_back(player);
     }
 
     do {
@@ -75,6 +78,24 @@ int main() {
     Board board;
     board.generate(boardHeight, boardWidth);
     board.render(players);
+
+    bool isPlaying = true;
+    std::string userInput;
+    while (isPlaying) {
+      for (int i = 1; i <= numOfPlayers; i++) {
+        std::cout << "It is player " << i << "'s turn.\nThey are at tile " << players[i-1].position << "\nEnter \"ROLL\" to roll or \"EXIT\" to exit";
+        std::cin >> userInput;
+        if (userInput == "ROLL") {
+
+        } else if (userInput == "EXIT") {
+
+        }
+        else {
+          std::cout << "Please enter either ROLL or EXIT";
+        }
+      }
+    }
+
 
     std::cin.get();
     return 0;

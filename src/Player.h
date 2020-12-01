@@ -1,8 +1,10 @@
 #pragma once
 #include <string>
 
-struct Player {
+class Player {
+public:
   std::string name;
-  char icon;
-  int postiion;
+  int position;
+public:
+  Player();
 };
