@@ -11,7 +11,7 @@ void Board::generate(int h, int w) {
 
   // Generate Ladders
   for (int i = 0; i < sizeof(ladders) / sizeof(Ladder); i++) {
-    ladders[i].bottom = randomInt(1, size - 1);
+    ladders[i].bottom = randomInt(2, size - 1);
     ladders[i].top = randomInt(ladders[i].bottom + 1, size);
   }
 
@@ -70,5 +70,14 @@ void Board::checkForLadderAndMove(Player* player) {
       player->position = ladders[i].top;
       std::cout << "Yay! You hit a ladder! You are now at tile " << player->position << "\n";
     }
+  }
+}
+
+void Board::checkForPowerUp(Player* player) {
+  for (int i = 0; i < sizeof(powerUps) / sizeof(PowerUp); i++) {
+    if (player->position == powerUps[i].position)
+      player->hasPowerUp = true;
+    else
+      player->hasPowerUp = false;
   }
 }

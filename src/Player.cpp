@@ -2,10 +2,7 @@
 
 Player::Player() {
   position = 1;
-}
-
-bool Player::hasPowerUp(int boardSize) {
-  return position == boardSize;
+  hasPowerUp = false;
 }
 
 void Player::move(int numOfTiles) {

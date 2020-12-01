@@ -12,7 +12,7 @@ int rollDice(int numOfDice);
 
 int randomInt(int start, int end) {
   return start + rand() % end;
-};
+}
 
 int rollDice(int numOfDice) {
   int diceRoll = 0;
@@ -99,12 +99,16 @@ int main() {
         std::cout << "Ladders\n";
         std::cout << "Ladder1 Top: " << board.ladders[0].top << "\tLadder1 Bottom:" << board.ladders[0].bottom << std::endl;
         std::cout << "Ladder2 Top: " << board.ladders[1].top << "\tLadder2 Bottom:" << board.ladders[1].bottom << std::endl;
-        std::cout << "Ladder3 Top: " << board.ladders[2].top << "\tLadder3 Bottom:" << board.ladders[2].bottom << std::endl;
+        std::cout << "Ladder3 Top: " << board.ladders[2].top << "\tLadder3 Bottom:" << board.ladders[2].bottom << std::endl;  
+        std::cout << "Power Ups\n";
+        for (int j = 0; j < board.powerUps.size(); j++) {
+          std::cout << "Power Up" << j+1 << ": " << board.powerUps[j].position << "\n";
+        }
         std::cin >> userInput;
 
         if (userInput == "ROLL") {
           int diceRoll;
-          if (players[i].hasPowerUp(board.size)) {
+          if (players[i].hasPowerUp) {
             diceRoll = rollDice(2);
           } else {
             diceRoll = rollDice(1);
@@ -114,6 +118,7 @@ int main() {
           board.render(players);
           board.checkForSnakeAndMove(&players[i]);
           board.checkForLadderAndMove(&players[i]);
+          board.checkForPowerUp(&players[i]);
           std::cout << players[i].name << " rolled a " << diceRoll << "\nThey are now at tile " << players[i].position << "\n";
         } else if (userInput == "EXIT") {
           isPlaying = false;

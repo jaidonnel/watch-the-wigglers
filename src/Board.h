@@ -18,4 +18,5 @@ public:
   void render(std::vector<Player> players);
   void checkForSnakeAndMove(Player* player);
   void checkForLadderAndMove(Player* player);
+  void checkForPowerUp(Player* player);
 };
