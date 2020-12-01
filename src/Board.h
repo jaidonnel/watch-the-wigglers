@@ -17,4 +17,5 @@ public:
   void generate(int h, int w);
   void render(std::vector<Player> players);
   void checkForSnakeAndMove(Player* player);
+  void checkForLadderAndMove(Player* player);
 };

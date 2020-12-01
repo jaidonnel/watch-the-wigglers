@@ -113,6 +113,7 @@ int main() {
           clearScreen();
           board.render(players);
           board.checkForSnakeAndMove(&players[i]);
+          board.checkForLadderAndMove(&players[i]);
           std::cout << players[i].name << " rolled a " << diceRoll << "\nThey are now at tile " << players[i].position << "\n";
         } else if (userInput == "EXIT") {
           isPlaying = false;

@@ -63,3 +63,12 @@ void Board::checkForSnakeAndMove(Player* player) {
     }
   }
 }
+
+void Board::checkForLadderAndMove(Player* player) {
+  for (int i = 0; i < sizeof(ladders) / sizeof(Ladder); i++) {
+    if (player->position == ladders[i].bottom) {
+      player->position = ladders[i].top;
+      std::cout << "Yay! You hit a ladder! You are now at tile " << player->position << "\n";
+    }
+  }
+}
