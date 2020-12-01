@@ -20,11 +20,6 @@ void clearScreen() {
 int main() {
     srand(time(NULL));
     int numOfPlayers, boardHeight, boardWidth;
-    std::string emojis[4] = {"😀", "😁", "😍" "😉"};
-    std::cout << emojis[0];
-    std::cout << emojis[1];
-    std::cout << emojis[2];
-    std::cout << emojis[3];
     std::vector<int> emojiChoices;
     std::vector<Player> players;
 
@@ -52,8 +47,6 @@ int main() {
       std::cout << "Enter Player " << i << "'s name" << std::endl;
       std::cin.ignore();
       getline(std::cin, name);
-      if (numOfPlayers > 1) { }
-      // players.push_back({name, emojis[i-1], 0});
     }
 
     do {
