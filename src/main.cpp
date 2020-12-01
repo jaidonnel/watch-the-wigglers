@@ -94,7 +94,12 @@ int main() {
         std::cout << "Ladder3 Top: " << board.ladders[2].top << "\tLadder3 Bottom:" << board.ladders[2].bottom << std::endl;
         std::cin >> userInput;
         if (userInput == "ROLL") {
-
+          if (players[i].hasPowerUp(board.size)) {
+            players[i].move(randomInt(2, 12));
+          } else {
+            players[i].move(randomInt(1, 6));
+          }
+          board.render(players);
         } else if (userInput == "EXIT") {
 
         }

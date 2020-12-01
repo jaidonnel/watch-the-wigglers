@@ -7,4 +7,7 @@ public:
   int position;
 public:
   Player();
+  bool hasPowerUp(int boardSize);
+  bool hasWon(int boardSize);
+  void move(int numOfTiles);
 };

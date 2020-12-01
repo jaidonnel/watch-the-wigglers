@@ -54,3 +54,12 @@ void Board::render(std::vector<Player> players) {
     std::cout << std::endl;
   }
 }
+
+bool Board::checkForSnake(Player* player) {
+  for (int i = 0; i < sizeof(snakes) / sizeof(Snake); i++) {
+    if (player->position == snakes[i].top || player->position == snakes[i].bottom) {
+      return true;
+    }
+  }
+  return false;
+}
