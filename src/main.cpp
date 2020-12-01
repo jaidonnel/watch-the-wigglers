@@ -8,10 +8,19 @@
 #include "Board.h"
 
 int randomInt(int start, int end);
+int rollDice(int numOfDice);
 
 int randomInt(int start, int end) {
   return start + rand() % end;
 };
+
+int rollDice(int numOfDice) {
+  int diceRoll = 0;
+  for (int i = 0; i < numOfDice; i++)
+    diceRoll += randomInt(1, 6);
+  std::cout << "You rolled a " << diceRoll;
+  return diceRoll;
+}
 
 void clearScreen() {
   std::cout << "\033[2J\033[1;1H";
@@ -95,11 +104,12 @@ int main() {
         std::cin >> userInput;
         if (userInput == "ROLL") {
           if (players[i].hasPowerUp(board.size)) {
-            players[i].move(randomInt(2, 12));
+            players[i].move(rollDice(2));
           } else {
-            players[i].move(randomInt(1, 6));
+            players[i].move(rollDice(1));
           }
           board.render(players);
+          board.checkForSnakeAndMove(&players[i]);
         } else if (userInput == "EXIT") {
 
         }

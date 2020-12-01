@@ -58,6 +58,7 @@ void Board::render(std::vector<Player> players) {
 void Board::checkForSnakeAndMove(Player* player) {
   for (int i = 0; i < sizeof(snakes) / sizeof(Snake); i++) {
     if (player->position == snakes[i].top) {
+      std::cout << "Player position: " << player->position << "\n";
       player->position = snakes[i].bottom;
     }
   }
