@@ -5,6 +5,7 @@
 #include <time.h>
 #include <vector>
 #include <limits>
+#include "Player.h"
 
 int randomInt(int start, int end);
 
@@ -15,14 +16,6 @@ int randomInt(int start, int end) {
 void clearScreen() {
   std::cout << "\033[2J\033[1;1H";
 }
-
-class Player
-{
-public:
-  std::string name;
-  char icon;
-  int postiion;
-};
 
 class PowerUp {
 public:
