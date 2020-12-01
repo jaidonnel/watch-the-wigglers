@@ -82,8 +82,16 @@ int main() {
     bool isPlaying = true;
     std::string userInput;
     while (isPlaying) {
-      for (int i = 1; i <= numOfPlayers; i++) {
-        std::cout << "It is player " << i << "'s turn.\nThey are at tile " << players[i-1].position << "\nEnter \"ROLL\" to roll or \"EXIT\" to exit";
+      for (int i = 0; i < numOfPlayers; i++) {
+        std::cout << "It is player " << i+1 << "'s turn.\nThey are at tile " << players[i].position << "\nEnter \"ROLL\" to roll or \"EXIT\" to exit\n";
+        std::cout << "Snakes\n";
+        std::cout << "Snake1 Top: " << board.snakes[0].top << "\tSnake1 Bottom:" << board.snakes[0].bottom << std::endl;
+        std::cout << "Snake2 Top: " << board.snakes[1].top << "\tSnake2 Bottom:" << board.snakes[1].bottom << std::endl;
+        std::cout << "Snake3 Top: " << board.snakes[2].top << "\tSnake3 Bottom:" << board.snakes[2].bottom << std::endl;
+        std::cout << "Ladders\n";
+        std::cout << "Ladder1 Top: " << board.ladders[0].top << "\tLadder1 Bottom:" << board.ladders[0].bottom << std::endl;
+        std::cout << "Ladder2 Top: " << board.ladders[1].top << "\tLadder2 Bottom:" << board.ladders[1].bottom << std::endl;
+        std::cout << "Ladder3 Top: " << board.ladders[2].top << "\tLadder3 Bottom:" << board.ladders[2].bottom << std::endl;
         std::cin >> userInput;
         if (userInput == "ROLL") {
 
