@@ -18,7 +18,6 @@ int rollDice(int numOfDice) {
   int diceRoll = 0;
   for (int i = 0; i < numOfDice; i++)
     diceRoll += randomInt(1, 6);
-  std::cout << "You rolled a " << diceRoll;
   return diceRoll;
 }
 
@@ -102,24 +101,27 @@ int main() {
         std::cout << "Ladder2 Top: " << board.ladders[1].top << "\tLadder2 Bottom:" << board.ladders[1].bottom << std::endl;
         std::cout << "Ladder3 Top: " << board.ladders[2].top << "\tLadder3 Bottom:" << board.ladders[2].bottom << std::endl;
         std::cin >> userInput;
+
         if (userInput == "ROLL") {
+          int diceRoll;
           if (players[i].hasPowerUp(board.size)) {
-            players[i].move(rollDice(2));
+            diceRoll = rollDice(2);
           } else {
-            players[i].move(rollDice(1));
+            diceRoll = rollDice(1);
           }
+          players[i].move(diceRoll);
+          clearScreen();
           board.render(players);
           board.checkForSnakeAndMove(&players[i]);
+          std::cout << players[i].name << " rolled a " << diceRoll << "\nThey are now at tile " << players[i].position << "\n";
         } else if (userInput == "EXIT") {
-
+          isPlaying = false;
         }
         else {
-          std::cout << "Please enter either ROLL or EXIT";
+          std::cout << "Please enter either ROLL or EXIT\n";
         }
       }
     }
-
-
     std::cin.get();
     return 0;
 }
