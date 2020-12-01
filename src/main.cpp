@@ -100,7 +100,6 @@ int main() {
             players[i].move(randomInt(1, 6));
           }
           board.render(players);
-          board.checkForSnake(&players[i]);
         } else if (userInput == "EXIT") {
 
         }
