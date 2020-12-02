@@ -125,6 +125,7 @@ int main() {
           }
           std::cout << players[i].name << " rolled a " << diceRoll << "\nThey are now at tile " << players[i].position << "\n";
         } else if (userInput == "EXIT") {
+          std::cout << "Exiting. Thank you for playing!";
           isPlaying = false;
         }
         else {
