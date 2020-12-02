@@ -28,7 +28,6 @@ void clearScreen() {
 int main() {
     srand(time(NULL));
     int numOfPlayers, boardHeight, boardWidth;
-    std::vector<int> emojiChoices;
     std::vector<Player> players;
 
     std::cout << "Welcome to Watch The Wigglers." << std::endl;
@@ -113,12 +112,17 @@ int main() {
           } else {
             diceRoll = rollDice(1);
           }
-          players[i].move(diceRoll);
+          players[i].move(diceRoll, board.size);
           clearScreen();
           board.render(players);
           board.checkForSnakeAndMove(&players[i]);
           board.checkForLadderAndMove(&players[i]);
           board.checkForPowerUp(&players[i]);
+          board.checkForWin(&players[i]);
+          if (players[i].won) {
+            std::cout << "Player " << i+1 << " won. Congrats " << players[i].name << "!\n";
+            isPlaying = false;
+          }
           std::cout << players[i].name << " rolled a " << diceRoll << "\nThey are now at tile " << players[i].position << "\n";
         } else if (userInput == "EXIT") {
           isPlaying = false;

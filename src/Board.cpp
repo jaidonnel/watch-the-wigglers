@@ -81,3 +81,11 @@ void Board::checkForPowerUp(Player* player) {
       player->hasPowerUp = false;
   }
 }
+
+void Board::checkForWin(Player* player) {
+  if (player->position == size) {
+    player->won = true;
+  } else {
+    player->won = false;
+  }
+}

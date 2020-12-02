@@ -19,4 +19,5 @@ public:
   void checkForSnakeAndMove(Player* player);
   void checkForLadderAndMove(Player* player);
   void checkForPowerUp(Player* player);
+  void checkForWin(Player* player);
 };

@@ -5,9 +5,8 @@ class Player {
 public:
   std::string name;
   int position;
-  bool hasPowerUp;
+  bool hasPowerUp, won;
 public:
   Player();
-  bool hasWon(int boardSize);
-  void move(int numOfTiles);
+  void move(int numOfTiles, int boardSize);
 };

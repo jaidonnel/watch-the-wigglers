@@ -5,6 +5,10 @@ Player::Player() {
   hasPowerUp = false;
 }
 
-void Player::move(int numOfTiles) {
-  position += numOfTiles;
+void Player::move(int numOfTiles, int boardSize) {
+  if(position + numOfTiles > boardSize) {
+    return;
+  } else {
+    position += numOfTiles;
+  }
 }
