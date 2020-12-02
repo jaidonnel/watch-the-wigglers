@@ -11,7 +11,7 @@ int randomInt(int start, int end);
 int rollDice(int numOfDice);
 
 int randomInt(int start, int end) {
-  return ((start + rand()) % end) + 1;
+  return start + rand() % (( end + 1 ) - start);
 }
 
 int rollDice(int numOfDice) {
