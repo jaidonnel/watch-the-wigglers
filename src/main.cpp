@@ -70,23 +70,17 @@ int main() {
     players.push_back(player);
   }
 
-  do {
-    std::cout << "Enter the board height (Min:5, Max: 10)" << std::endl;
-    while (!(std::cin >> boardHeight)) { // Prevents the user from entering string characters into an int variable
-      std::cout << "Enter the board height (Min: 5, Max: 10)" << std::endl;
-      std::cin.clear();
-      std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-    }  
-  } while (boardHeight > 10 || boardHeight < 5); 
+  getIntegerInRange(&boardHeight, 5, 10, "Enter the board height (Min:5, Max: 10)");
+  getIntegerInRange(&boardWidth, 5, 10, "Enter the board width (Min:5, Max: 10)");
   
-  do {
-    std::cout << "Enter the board width (Min:5, Max: 10)" << std::endl;
-    while (!(std::cin >> boardWidth)) { // Prevents the user from entering string characters into an int variable
-      std::cout << "Enter the board width (Min:5, Max: 10)" << std::endl;
-      std::cin.clear();
-      std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-    }  
-  } while (boardWidth > 10 || boardWidth < 5);
+  // do {
+  //   std::cout << "Enter the board width (Min:5, Max: 10)" << std::endl;
+  //   while (!(std::cin >> boardWidth)) { // Prevents the user from entering string characters into an int variable
+  //     std::cout << "Enter the board width (Min:5, Max: 10)" << std::endl;
+  //     std::cin.clear();
+  //     std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+  //   }  
+  // } while (boardWidth > 10 || boardWidth < 5);
 
   std::cout << "Let's begin" << std::endl;
   std::cin.ignore();
