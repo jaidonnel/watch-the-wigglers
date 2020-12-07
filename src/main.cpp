@@ -29,17 +29,17 @@ void Log(const char* message) {
   std::cout << message << std::endl;
 }
 
-void getIntegerInRange(int variable, int min, int max, const char* message) {
+void getIntegerInRange(int* variable, int min, int max, const char* message) {
   // Prompts the user using the message parameter and ensures that the value entered is 
   // within the range of the min and max parameters
   do {
     Log(message);
-    while (!(std::cin >> variable)) { // Prevents the user from entering string characters into an int variable
+    while (!(std::cin >> *variable)) { // Prevents the user from entering string characters into an int variable
       Log(message);
       std::cin.clear();
       std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
     }
-  } while (variable < min || variable > max );
+  } while (*variable < min || *variable > max );
 }
 
 int main() {
@@ -58,7 +58,7 @@ int main() {
   std::cin.get();
   clearScreen();
   
-  getIntegerInRange(numOfPlayers, 1, 4, "Enter the number of players (4 players maximum)");
+  getIntegerInRange(&numOfPlayers, 1, 4, "Enter the number of players (4 players maximum)");
 
   for (int i = 1; i <= numOfPlayers; i++) {
     std::string name;
