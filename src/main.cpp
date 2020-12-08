@@ -33,9 +33,9 @@ void getIntegerInRange(int* variable, int min, int max, const char* message) {
   // Prompts the user using the message parameter and ensures that the value entered is 
   // within the range of the min and max parameters
   do {
-    Log(message);
+    std::cout << message << std::endl;
     while (!(std::cin >> *variable)) { // Prevents the user from entering string characters into an int variable
-      Log(message);
+      std::cout << message << std::endl;
       std::cin.clear();
       std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
     }
@@ -48,20 +48,20 @@ int main() {
   std::vector<Player> players;
 
   //Explanation of Game
-  std::cout << "Welcome to Watch The Wigglers." << std::endl;
-  std::cout << "In this game every turn you will roll a die and move that amount of spaces." << std::endl;
-  std::cout << "There are also snakes and ladders." << std::endl;
-  std::cout << "If you land at the bottom of a ladder you will climb to the top of the ladder." << std::endl;
-  std::cout << "If you land at the top of a snake you will slide to the bottom of the snake." << std::endl;
-  std::cout << "You must land on the final square to win." << std::endl;
-  std::cout << "Once you understand press enter to setup the game." << std::endl;
+  std::cout << "Welcome to Watch The Wigglers.\n";
+  std::cout << "In this game every turn you will roll a die and move that amount of spaces.\n";
+  std::cout << "There are also snakes and ladders.\n";
+  std::cout << "If you land at the bottom of a ladder you will climb to the top of the ladder.\n";
+  std::cout << "If you land at the top of a snake you will slide to the bottom of the snake.\n";
+  std::cout << "You must land on the final square to win.\n";
+  std::cout << "Once you understand press enter to setup the game.\n";
   std::cin.get();
   clearScreen();
   
   getIntegerInRange(&numOfPlayers, 1, 4, "Enter the number of players (4 players maximum)");
   for (int i = 1; i <= numOfPlayers; i++) {
     std::string name;
-    std::cout << "Enter Player " << i << "'s name" << std::endl;
+    std::cout << "Enter Player " << i << "'s name\n";
     std::cin.ignore();
     getline(std::cin, name);
     Player player;
@@ -71,7 +71,7 @@ int main() {
   getIntegerInRange(&boardHeight, 5, 10, "Enter the board height (Min:5, Max: 10)");
   getIntegerInRange(&boardWidth, 5, 10, "Enter the board width (Min:5, Max: 10)");
 
-  std::cout << "Let's begin" << std::endl;
+  std::cout << "Let's begin\n";
   std::cin.ignore();
   std::cin.get();
   clearScreen();
@@ -88,13 +88,13 @@ int main() {
       Player* player = &players[i];
       std::cout << "It is player " << i+1 << "'s turn.\nThey are at tile " << player->position << "\nEnter \"ROLL\" to roll or \"EXIT\" to exit\n";
       std::cout << "Snakes\n";
-      std::cout << "Snake1 Top: " << board.snakes[0].top << "\tSnake1 Bottom:" << board.snakes[0].bottom << std::endl;
-      std::cout << "Snake2 Top: " << board.snakes[1].top << "\tSnake2 Bottom:" << board.snakes[1].bottom << std::endl;
-      std::cout << "Snake3 Top: " << board.snakes[2].top << "\tSnake3 Bottom:" << board.snakes[2].bottom << std::endl;
+      std::cout << "Snake1 Top: " << board.snakes[0].top << "\tSnake1 Bottom:" << board.snakes[0].bottom << "\n";
+      std::cout << "Snake2 Top: " << board.snakes[1].top << "\tSnake2 Bottom:" << board.snakes[1].bottom << "\n";
+      std::cout << "Snake3 Top: " << board.snakes[2].top << "\tSnake3 Bottom:" << board.snakes[2].bottom << "\n";
       std::cout << "Ladders\n";
-      std::cout << "Ladder1 Top: " << board.ladders[0].top << "\tLadder1 Bottom:" << board.ladders[0].bottom << std::endl;
-      std::cout << "Ladder2 Top: " << board.ladders[1].top << "\tLadder2 Bottom:" << board.ladders[1].bottom << std::endl;
-      std::cout << "Ladder3 Top: " << board.ladders[2].top << "\tLadder3 Bottom:" << board.ladders[2].bottom << std::endl;  
+      std::cout << "Ladder1 Top: " << board.ladders[0].top << "\tLadder1 Bottom:" << board.ladders[0].bottom << "\n";
+      std::cout << "Ladder2 Top: " << board.ladders[1].top << "\tLadder2 Bottom:" << board.ladders[1].bottom << "\n";
+      std::cout << "Ladder3 Top: " << board.ladders[2].top << "\tLadder3 Bottom:" << board.ladders[2].bottom << "\n";  
       std::cout << "Power Ups\n";
       for (int j = 0; j < board.powerUps.size(); j++) {
         std::cout << "Power Up" << j+1 << ": " << board.powerUps[j].position << "\n";
