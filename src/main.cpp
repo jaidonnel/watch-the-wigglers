@@ -82,9 +82,11 @@ int main() {
 
   bool isPlaying = true;
   std::string userInput;
+
   while (isPlaying) {
     for (int i = 0; i < numOfPlayers; i++) {
-      std::cout << "It is player " << i+1 << "'s turn.\nThey are at tile " << players[i].position << "\nEnter \"ROLL\" to roll or \"EXIT\" to exit\n";
+      Player* player = &players[i];
+      std::cout << "It is player " << i+1 << "'s turn.\nThey are at tile " << player->position << "\nEnter \"ROLL\" to roll or \"EXIT\" to exit\n";
       std::cout << "Snakes\n";
       std::cout << "Snake1 Top: " << board.snakes[0].top << "\tSnake1 Bottom:" << board.snakes[0].bottom << std::endl;
       std::cout << "Snake2 Top: " << board.snakes[1].top << "\tSnake2 Bottom:" << board.snakes[1].bottom << std::endl;
@@ -101,23 +103,23 @@ int main() {
 
       if (userInput == "ROLL") {
         int diceRoll;
-        if (players[i].hasPowerUp) {
+        if (player->hasPowerUp) {
           diceRoll = rollDice(2);
         } else {
           diceRoll = rollDice(1);
         }
-        players[i].move(diceRoll, board.size);
+        player->move(diceRoll, board.size);
         clearScreen();
         board.render(players);
-        board.checkForSnakeAndMove(&players[i]);
-        board.checkForLadderAndMove(&players[i]);
-        board.checkForPowerUp(&players[i]);
-        board.checkForWin(&players[i]);
-        if (players[i].won) {
-          std::cout << "Player " << i+1 << " won. Congrats " << players[i].name << "!\n";
+        board.checkForSnakeAndMove(player);
+        board.checkForLadderAndMove(player);
+        board.checkForPowerUp(player);
+        board.checkForWin(player);
+        if (player->won) {
+          std::cout << "Player " << i+1 << " won. Congrats " << player->name << "!\n";
           isPlaying = false;
         }
-        std::cout << players[i].name << " rolled a " << diceRoll << "\nThey are now at tile " << players[i].position << "\n";
+        std::cout << player->name << " rolled a " << diceRoll << "\nThey are now at tile " << player->position << "\n";
       } else if (userInput == "EXIT") {
         std::cout << "Exiting. Thank you for playing!";
         isPlaying = false;
