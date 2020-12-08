@@ -59,7 +59,6 @@ int main() {
   clearScreen();
   
   getIntegerInRange(&numOfPlayers, 1, 4, "Enter the number of players (4 players maximum)");
-
   for (int i = 1; i <= numOfPlayers; i++) {
     std::string name;
     std::cout << "Enter Player " << i << "'s name" << std::endl;
@@ -69,18 +68,8 @@ int main() {
     player.name = name;
     players.push_back(player);
   }
-
   getIntegerInRange(&boardHeight, 5, 10, "Enter the board height (Min:5, Max: 10)");
   getIntegerInRange(&boardWidth, 5, 10, "Enter the board width (Min:5, Max: 10)");
-  
-  // do {
-  //   std::cout << "Enter the board width (Min:5, Max: 10)" << std::endl;
-  //   while (!(std::cin >> boardWidth)) { // Prevents the user from entering string characters into an int variable
-  //     std::cout << "Enter the board width (Min:5, Max: 10)" << std::endl;
-  //     std::cin.clear();
-  //     std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-  //   }  
-  // } while (boardWidth > 10 || boardWidth < 5);
 
   std::cout << "Let's begin" << std::endl;
   std::cin.ignore();
