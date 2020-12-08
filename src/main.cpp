@@ -25,10 +25,6 @@ void clearScreen() {
   std::cout << "\033[2J\033[1;1H";
 }
 
-void Log(const char* message) {
-  std::cout << message << std::endl;
-}
-
 void getIntegerInRange(int* variable, int min, int max, const char* message) {
   // Prompts the user using the message parameter and ensures that the value entered is 
   // within the range of the min and max parameters
