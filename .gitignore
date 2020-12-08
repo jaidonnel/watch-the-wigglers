@@ -42,3 +42,6 @@
 # Ignore all local history of files
 .history
 .ionide
+
+## Personal files
+todo.txt
