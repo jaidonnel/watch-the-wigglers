@@ -30,9 +30,9 @@ void getIntegerInRange(int* variable, int min, int max, const char* message) {
   // Prompts the user using the message parameter and ensures that the value entered is 
   // within the range of the min and max parameters
   do {
-    std::cout << message << std::endl;
+    std::cout << message << '\n';
     while (!(std::cin >> *variable)) { // Prevents the user from entering string characters into an int variable
-      std::cout << message << std::endl;
+      std::cout << message << '\n';
       std::cin.clear();
       std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
     }
@@ -137,7 +137,6 @@ int main() {
 
   bool isPlaying = true;
   std::string userInput;
-
   while (isPlaying) {
     for (int i = 0; i < numOfPlayers; i++) {
       Player* player = &players[i];
@@ -184,6 +183,7 @@ int main() {
         board.render(players);
         performChecks(board, player, isPlaying, i);
         std::cout << "Player " << i+1 << "(" << player->name << ") was moved to position " << player->position << '\n';
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
       }
       #endif
       else if (command == "EXIT")
