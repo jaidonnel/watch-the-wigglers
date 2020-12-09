@@ -12,3 +12,7 @@ void Player::move(int numOfTiles, int boardSize) {
     position += numOfTiles;
   }
 }
+
+void Player::moveTo(int tileNumber, int boardSize) {
+  position = tileNumber;
+}

@@ -9,4 +9,5 @@ public:
 public:
   Player();
   void move(int numOfTiles, int boardSize);
+  void moveTo(int numOfTiles, int boardSize);
 };
