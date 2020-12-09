@@ -39,14 +39,14 @@ void getIntegerInRange(int* variable, int min, int max, const char* message) {
   } while (*variable < min || *variable > max );
 }
 
-void performChecks(Board board, Player* player, bool isPlaying, int i) {
+void performChecks(Board board, Player* player, bool* isPlaying, int i) {
   board.checkForSnakeAndMove(player);
   board.checkForLadderAndMove(player);
   board.checkForPowerUp(player);
   board.checkForWin(player);
   if (player->won) {
     std::cout << "Player " << i+1 << " won. Congrats " << player->name << "!\n";
-    isPlaying = false;
+    *isPlaying = false;
   }
 }
 
@@ -166,11 +166,11 @@ int main() {
         player->move(diceRoll, board.size);
         clearScreen();
         board.render(players);
-        performChecks(board, player, isPlaying, i);
+        performChecks(board, player, &isPlaying, i);
         std::cout << player->name << " rolled a " << diceRoll << "\nThey are now at tile " << player->position << "\n";
       }
       #ifdef DEBUG
-      else if (command == "MOVE")
+      else if (command == "MOVE" || command == "MOVETO")
       {
         int parameter;
         if (userInput.find_first_of(" ") != std::string::npos) {
@@ -178,10 +178,14 @@ int main() {
         } else {
           getIntegerInRange(&parameter, 1, MAX, "Please enter the number of tiles to move the player by");
         }
-        player->move(parameter, board.size);
+        if (command == "MOVE") {
+          player->move(parameter, board.size);
+        } else {
+          player->moveTo(parameter, board.size);
+        }
         clearScreen();
         board.render(players);
-        performChecks(board, player, isPlaying, i);
+        performChecks(board, player, &isPlaying, i);
         std::cout << "Player " << i+1 << "(" << player->name << ") was moved to position " << player->position << '\n';
         std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
       }
