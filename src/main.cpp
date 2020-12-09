@@ -175,6 +175,9 @@ int main() {
         if (userInput.find_first_of(" ") != std::string::npos) {
           int parameter = std::stoi(userInput.substr(userInput.find_first_of(" ")));
           player->move(parameter, board.size);
+          clearScreen();
+          board.render(players);
+          performChecks(board, player);
         } else {
           std::cout << "Command was entered incorrectly\n";
         }
