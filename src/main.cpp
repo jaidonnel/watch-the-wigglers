@@ -6,6 +6,7 @@
 #include <vector>
 #include <limits>
 #include "Board.h"
+#define MAX 100
 
 int randomInt(int start, int end);
 int rollDice(int numOfDice);
@@ -172,16 +173,17 @@ int main() {
       #ifdef DEBUG
       else if (command == "MOVE")
       {
+        int parameter;
         if (userInput.find_first_of(" ") != std::string::npos) {
-          int parameter = std::stoi(userInput.substr(userInput.find_first_of(" ")));
-          player->move(parameter, board.size);
-          clearScreen();
-          board.render(players);
-          performChecks(board, player, isPlaying, i);
-          std::cout << "Player " << i+1 << "(" << player->name << ") was moved to position " << player->position << '\n';
+          parameter = std::stoi(userInput.substr(userInput.find_first_of(" ")));
         } else {
-          std::cout << "Command was entered incorrectly\n";
+          getIntegerInRange(&parameter, 1, MAX, "Please enter the number of tiles to move the player by");
         }
+        player->move(parameter, board.size);
+        clearScreen();
+        board.render(players);
+        performChecks(board, player, isPlaying, i);
+        std::cout << "Player " << i+1 << "(" << player->name << ") was moved to position " << player->position << '\n';
       }
       #endif
       else if (command == "EXIT")
