@@ -53,19 +53,66 @@ int main() {
   std::cout << "Once you understand press enter to setup the game.\n";
   std::cin.get();
   clearScreen();
+
+  std::string configurationType;
   
-  getIntegerInRange(&numOfPlayers, 1, 4, "Enter the number of players (4 players maximum)");
-  for (int i = 1; i <= numOfPlayers; i++) {
-    std::string name;
-    std::cout << "Enter Player " << i << "'s name\n";
-    std::cin.ignore();
-    getline(std::cin, name);
-    Player player;
-    player.name = name;
-    players.push_back(player);
+  while (1) {
+    std::cout << "Enter your configuration type. Enter CUSTOM for custom settings or DEFAULT to go with the default configuration\n";
+    std::cin >> configurationType;
+
+    if (configurationType == "CUSTOM")
+    {
+      getIntegerInRange(&numOfPlayers, 1, 4, "Enter the number of players (4 players maximum)");
+      for (int i = 1; i <= numOfPlayers; i++) {
+        std::string name;
+        std::cout << "Enter Player " << i << "'s name\n";
+        std::cin.ignore();
+        getline(std::cin, name);
+        Player player;
+        player.name = name;
+        players.push_back(player);
+      }
+      getIntegerInRange(&boardHeight, 5, 10, "Enter the board height (Min:5, Max: 10)");
+      getIntegerInRange(&boardWidth, 5, 10, "Enter the board width (Min:5, Max: 10)");
+      break;
+    } 
+    else if (configurationType == "DEFAULT") 
+    {
+      numOfPlayers = 1;
+      Player player;
+      player.name = "Foo";
+      players.push_back(player);
+      boardHeight = 5;
+      boardWidth = 5;
+      break;
+    }
+    else if (configurationType == "DEFAULT2")
+    {
+      numOfPlayers = 2;
+      Player player;
+      player.name = "Foo1";
+      players.push_back(player);
+      player.name = "Foo2";
+      players.push_back(player);
+      boardHeight = 5;
+      boardWidth = 5;
+      break;
+    }
+    else if (configurationType == "DEBUG")
+    {
+      Player player;
+      player.name = "DEBUG";
+      players.push_back(player);
+      numOfPlayers = 1;
+      boardHeight = 5;
+      boardWidth = 5;
+      break;
+    }
+    else
+    {
+      std::cout << "Enter a valid configuration type\n";
+    }
   }
-  getIntegerInRange(&boardHeight, 5, 10, "Enter the board height (Min:5, Max: 10)");
-  getIntegerInRange(&boardWidth, 5, 10, "Enter the board width (Min:5, Max: 10)");
 
   std::cout << "Let's begin\n";
   std::cin.ignore();
