@@ -89,7 +89,7 @@ int main() {
     {
       numOfPlayers = 1;
       Player player;
-      player.name = "Foo";
+      player.name = "El Profesor";
       players.push_back(player);
       boardHeight = 5;
       boardWidth = 5;
@@ -99,9 +99,9 @@ int main() {
     {
       numOfPlayers = 2;
       Player player;
-      player.name = "Foo1";
+      player.name = "Nairobi";
       players.push_back(player);
-      player.name = "Foo2";
+      player.name = "Helsinki";
       players.push_back(player);
       boardHeight = 5;
       boardWidth = 5;
