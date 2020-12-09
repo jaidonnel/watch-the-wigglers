@@ -110,16 +110,6 @@ int main() {
       boardWidth = 5;
       break;
     }
-    else if (configurationType == "DEBUG")
-    {
-      Player player;
-      player.name = "DEBUG";
-      players.push_back(player);
-      numOfPlayers = 1;
-      boardHeight = 5;
-      boardWidth = 5;
-      break;
-    }
     else
     {
       std::cout << "Enter a valid configuration type\n";
