@@ -1,12 +1,8 @@
 # Watch The Wigglers
 
----
-
 This a simple console game created for a school assignment I had.
 
 # How To Compile
-
----
 
 ## Debug
 
