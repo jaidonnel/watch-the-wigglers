@@ -38,11 +38,15 @@ void getIntegerInRange(int* variable, int min, int max, const char* message) {
   } while (*variable < min || *variable > max );
 }
 
-void performChecks(Board board, Player* player) {
+void performChecks(Board board, Player* player, bool isPlaying, int i) {
   board.checkForSnakeAndMove(player);
   board.checkForLadderAndMove(player);
   board.checkForPowerUp(player);
   board.checkForWin(player);
+  if (player->won) {
+    std::cout << "Player " << i+1 << " won. Congrats " << player->name << "!\n";
+    isPlaying = false;
+  }
 }
 
 int main() {
@@ -162,11 +166,7 @@ int main() {
         player->move(diceRoll, board.size);
         clearScreen();
         board.render(players);
-        performChecks(board, player);
-        if (player->won) {
-          std::cout << "Player " << i+1 << " won. Congrats " << player->name << "!\n";
-          isPlaying = false;
-        }
+        performChecks(board, player, isPlaying, i);
         std::cout << player->name << " rolled a " << diceRoll << "\nThey are now at tile " << player->position << "\n";
       }
       #ifdef DEBUG
@@ -177,7 +177,7 @@ int main() {
           player->move(parameter, board.size);
           clearScreen();
           board.render(players);
-          performChecks(board, player);
+          performChecks(board, player, isPlaying, i);
         } else {
           std::cout << "Command was entered incorrectly\n";
         }
