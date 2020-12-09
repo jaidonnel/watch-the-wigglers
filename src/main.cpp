@@ -178,6 +178,7 @@ int main() {
           clearScreen();
           board.render(players);
           performChecks(board, player, isPlaying, i);
+          std::cout << "Player " << i+1 << "(" << player->name << ") was moved to position " << player->position << '\n';
         } else {
           std::cout << "Command was entered incorrectly\n";
         }
