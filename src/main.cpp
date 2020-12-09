@@ -143,14 +143,15 @@ int main() {
         std::cout << "Power Up" << j+1 << ": " << board.powerUps[j].position << "\n";
       }
       std::cin >> userInput;
+      std::string command = userInput.substr(0, userInput.find_first_of(" "));
 
-      if (userInput == "ROLL") {
+      if (command == "ROLL")
+      {
         int diceRoll;
-        if (player->hasPowerUp) {
+        if (player->hasPowerUp)
           diceRoll = rollDice(2);
-        } else {
+        else
           diceRoll = rollDice(1);
-        }
         player->move(diceRoll, board.size);
         clearScreen();
         board.render(players);
@@ -163,11 +164,14 @@ int main() {
           isPlaying = false;
         }
         std::cout << player->name << " rolled a " << diceRoll << "\nThey are now at tile " << player->position << "\n";
-      } else if (userInput == "EXIT") {
+      }
+      else if (command == "EXIT")
+      {
         std::cout << "Exiting. Thank you for playing!";
         isPlaying = false;
       }
-      else {
+      else
+      {
         std::cout << "Please enter either ROLL or EXIT\n";
       }
     }
