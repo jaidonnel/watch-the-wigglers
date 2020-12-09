@@ -14,5 +14,8 @@ void Player::move(int numOfTiles, int boardSize) {
 }
 
 void Player::moveTo(int tileNumber, int boardSize) {
-  position = tileNumber;
+  if (tileNumber > boardSize || tileNumber < 0)
+    return;
+  else
+    position = tileNumber;
 }
