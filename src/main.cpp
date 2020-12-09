@@ -59,6 +59,7 @@ int main() {
   while (1) {
     std::cout << "Enter your configuration type. Enter CUSTOM for custom settings or DEFAULT to go with the default configuration\n";
     std::cin >> configurationType;
+    bool isDebug;
 
     if (configurationType == "CUSTOM")
     {
@@ -70,6 +71,8 @@ int main() {
         getline(std::cin, name);
         Player player;
         player.name = name;
+        if (player.name == "DEBUG")
+          isDebug = true;
         players.push_back(player);
       }
       getIntegerInRange(&boardHeight, 5, 10, "Enter the board height (Min:5, Max: 10)");
@@ -106,6 +109,7 @@ int main() {
       numOfPlayers = 1;
       boardHeight = 5;
       boardWidth = 5;
+      isDebug = true;
       break;
     }
     else
@@ -144,6 +148,7 @@ int main() {
       }
       std::cin >> userInput;
       std::string command = userInput.substr(0, userInput.find_first_of(" "));
+      // int parameter = std::stoi(userInput.substr(userInput.find_first_of(" ")));
 
       if (command == "ROLL")
       {
@@ -164,6 +169,9 @@ int main() {
           isPlaying = false;
         }
         std::cout << player->name << " rolled a " << diceRoll << "\nThey are now at tile " << player->position << "\n";
+      }
+      else if (command == "")
+      {
       }
       else if (command == "EXIT")
       {
