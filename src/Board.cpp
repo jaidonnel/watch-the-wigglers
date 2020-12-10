@@ -75,10 +75,12 @@ void Board::checkForLadderAndMove(Player* player) {
 
 void Board::checkForPowerUp(Player* player) {
   for (int i = 0; i < sizeof(powerUps) / sizeof(PowerUp); i++) {
-    if (player->position == powerUps[i].position)
+    if (player->position == powerUps[i].position) {
       player->hasPowerUp = true;
-    else
+      return;
+    } else {
       player->hasPowerUp = false;
+    }
   }
 }
 
