@@ -30,28 +30,70 @@ void Board::generate(int h, int w) {
 }
 
 void Board::render(std::vector<Player> players) {
-  int tileNumber = size;
+  /*
+  This method will render the game board to the screen.
+  The board adheres to the following rules:
+    * The board is rendered from top to bottom, left to right
+      due to the nature of the console
+    * The first tile of the board (1) must always be in the
+      bottom left corner
+    * The board must zig-zag such that the highest numbered
+      tile should be below the lowest numbered tile in the
+      row above
+    * Each adjacent tile in a column should differ by
+      w+(w-1)-((r-1)×2) where w is the board's width and
+      r is the row number
+    * The final tile of the board (board height × board width) must
+      be the first tile from the left in the row if:
+      * The board width and board height are both even numbers
+      * The board width is an odd number and the board height is an even number
+    * The final tile of the board (board height × board width) must
+      be the last tile from the left in the row if:
+      * The board width and board height are both odd numbers
+      * The board width is an even number and the board height is an odd number
+  */
+  int num = size;
+  int tileNumber;
+  bool startOnLeft;
+
+  if (
+    (width % 2) == 0 && (height % 2) == 0 ||
+    (width % 2) != 0 && (height % 2) == 0
+  ) {
+    startOnLeft = true;
+  } else if (
+    (width % 2) != 0 && (height % 2) != 0 ||
+    (width % 2) == 0 && (height % 2) != 0
+  ) {
+    startOnLeft = false;
+  }
+
   for (int i = 0; i < height; i++) {
     for (int j = 0; j < width; j++) {
-      if (tileNumber - (width - 1) + j < 10)
-        std::cout << "-";
-      if ((i % 2) != 0)
-        std::cout << "---" << tileNumber - (width - 1) + j << "--";
+      std::cout << "----";
+      if (startOnLeft)
+        tileNumber = num - j;
       else
-        std::cout << "---" << tileNumber - j << "--";
-      if (tileNumber - (width - 1) + j < 100)
-        std::cout << "-";
+        tileNumber = ((num - width)+1) + j;
+      std::cout << tileNumber;
+      if (tileNumber < 10)
+        std::cout << "---";
+      else
+        std::cout << "--";
     }
-    std::cout << std::endl;
+    std::cout << "-\n";
 
     for (int i = 0; i < 3; i++) {
+        std::cout << "|";
       for (int j = 0; j < width; j++) {
-          std::cout << "|      |";
+        std::cout << "       ";
+        std::cout << "|";
       }
-      std::cout << std::endl;
+      std::cout << '\n';
     }
-    tileNumber -= 5;
-    std::cout << std::endl;
+
+    num -= width;
+    startOnLeft = !startOnLeft;
   }
 }
 
