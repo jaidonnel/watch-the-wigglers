@@ -22,7 +22,7 @@ void Board::generate(int h, int w) {
   }
 
   //  Generate Powers Ups
-  powerUps.push_back({randomInt(width+1, width*2)});
+  powerUps.push_back({randomInt(width+1, width*2), false});
   if (numOfPowerUps > 1) {
     for (int i = 1; i < numOfPowerUps; i++)
       powerUps.push_back({randomInt(powerUps[0].position + 1, size - width)});
@@ -119,6 +119,7 @@ void Board::checkForPowerUp(Player* player) {
   for (int i = 0; i < sizeof(powerUps) / sizeof(PowerUp); i++) {
     if (player->position == powerUps[i].position) {
       player->hasPowerUp = true;
+      powerUps[i].isCollected = true;
       return;
     } else {
       player->hasPowerUp = false;

@@ -2,4 +2,6 @@
 
 struct PowerUp {
   int position;
+  bool isCollected;
+  // PowerUp();
 };
